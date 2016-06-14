@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^foo.html$ trouve.html [L] #L veut dire que j'ai finit ma règle. Définit des réecriture dans l'URL.
+RewriteRule ^accueil.html$ index.php [L] #L'ordre a une importance.
+RewriteRule ^([a-z-A-Z-0-9]+)\.html$ index.php?page=$1 [L] #Je met un pattern qui accepete les minuscules majuscules et plusieurs fois. Backslash récupère tout ce qui est dans le truc avant. Ici, c'est une ligne qui fonctionne pour tout.
+

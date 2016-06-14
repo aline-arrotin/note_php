@@ -1,0 +1,22 @@
+div .kind{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+
+}
+
+
+.Sport{
+	width: 25%;
+	background-color: orange;
+}
+
+.Hobby{
+	width: 25%;
+	background-color: pink;
+}
+
+.Soiree{
+	width: 25%;
+	background-color: blue;
+}
