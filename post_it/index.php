@@ -19,6 +19,11 @@ else:
 
 endif;
 
+
+
+
+
+
 	$post_it_request = $db_connect->query($sql); //Changer le nom de requête selon la requête.
 	echo $db_connect->error;
 
@@ -43,7 +48,7 @@ endwhile;
 	echo $db_connect->error;
 
 
-	//Je recupere les enregistrements de la base de donnée post_it.
+	//Je recupere les enregistrements de la TAB de donnée post_it.
 	//$allRows = $post_it_request->fetch_all(MYSQLI_ASSOC);//Je recupere les objets de manière associative. Constante de php. On recupère tout les enregistrements en une seule fois.
 
 while($row = $categorie_request->fetch_object()) : //Je recupere un enregistrement je le met dans un objet. All rows est un array d'objet.
