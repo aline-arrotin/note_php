@@ -1,9 +1,11 @@
 <?php 
 	
 // affichage des Erreurs php
-error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+error_reporting(E_ALL); //Affiche toutes les erreurs et notices.
+ini_set('display_errors', TRUE); //Affiche les erreurs
+ini_set('display_startup_errors', TRUE);// Affiche de force les erreurs serveur. Forcer l affichage des erreurs (de démarrage).
+
+//Ceci ne fonctionne pas avec MAMP.
 
 	define("DB_USER", "root"); // si en localhost avec Mampp
 	define("DB_NAME", "ingrwf04_qcm"); // nom de database
@@ -20,4 +22,6 @@ ini_set('display_startup_errors', TRUE);
 		$db_connect->set_charset("utf8");
 		//echo "ok";
 	endif;
+
+	session_start();
  ?>

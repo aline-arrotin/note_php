@@ -20,4 +20,9 @@
 		$date = implode($separator,$date); //Je la retransforme en chaine de caractère avec le separateur que je souhaite.
 		return $date; //je la retourne à la variable qui l'utilisera.
 	}
+
+
+
+//
+
 ?>

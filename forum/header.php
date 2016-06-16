@@ -15,6 +15,29 @@
 	</head>
 <body>
 	<div class="container">
-		<h1>Forum de questions.</h1>
 
-	<main>
+	<header>
+
+	<h1>Le forum des licornes</h1>
+	<?php if(isset($_SESSION['auteur'])) :  ?>
+		<p>Bienvenue <?php echo $_SESSION['auteur']['email']; ?> - <a href="connexion.php?delog">Logout</a></p>
+	<?php else : ?>
+		<?php echo (isset($_GET['error']) == 'log') ? "Erreur log/pass" : ""; ?>
+
+	<form id='connexion' action='connexion.php' method='post' accept-charset='UTF-8'>
+		<fieldset >
+			<legend>Login</legend>
+			<input type='hidden' name='submitted' id='submitted' value='1'/>
+			 
+			<label for='email'>Email : </label>
+			<input type='text' name='email' id='email'  maxlength="50" />
+			 
+			<label for='password'>Password : </label>
+			<input type='password' name='password' id='password' maxlength="50" />
+			 
+			<input type='submit' name='Submit' value='Submit' />
+		 
+		</fieldset>
+	</form>
+<?php endif; ?>
+</header>
