@@ -19,11 +19,9 @@
 	<header>
 
 	<h1>Le forum des licornes</h1>
-	<?php if(isset($_SESSION['auteur'])) :  ?>
+	<?php if(isset($_SESSION['auteur'])):  ?>
 		<p>Bienvenue <?php echo $_SESSION['auteur']['email']; ?> - <a href="connexion.php?delog">Logout</a></p>
-	<?php else : ?>
-		<?php echo (isset($_GET['error']) == 'log') ? "Erreur log/pass" : ""; ?>
-
+	<?php else: ?><?php echo (isset($_GET['error']) == 'log') ? "Erreur log/pass" : ""; ?>
 	<form id='connexion' action='connexion.php' method='post' accept-charset='UTF-8'>
 		<fieldset >
 			<legend>Login</legend>

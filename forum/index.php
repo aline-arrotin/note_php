@@ -5,15 +5,27 @@
 //Delete une question et ses réponses.
 
 if(isset($_GET['delete'])) :
-	$sql = sprintf("DELETE FROM question WHERE ['id_questions']['id_question']='%s'",
+	$sql = sprintf("DELETE FROM question WHERE id_questions='%s'",
 		$_GET['delete']
 		);
 //echo $sql;
 $db_connect->query($sql); //Je me connecte à la base de donnée.
 $db_connect->error; //J'affiche s'il y a une erreur.
+
+$sql = sprintf("DELETE FROM reponse WHERE id_question='%s'",
+		$_GET['delete']
+		);
+//echo $sql;
+$db_connect->query($sql); //Je me connecte à la base de donnée.
+$db_connect->error; //J'affiche s'il y a une erreur.
+
+
+
 header("location:index.php"); //Dans mon url j'affiche la page réponse dont l'id questions = id_questions. $_GET est un array qui contient tout les paramètres d'url. Donc $_Get récupère ce qu'il y a après le "?". Donc ce qui est dans l'id_questions, ce qu'il y a dans la colonne id_questions et je l'affiche. Quand je suis dans index.php il retourne direct à l index donc je rappel pas de tableau uo de colones donc pas besoin de propriété de redirection..
 exit;
 endif;
+
+
 
 // if(isset($_GET['delete_post'])) :
 // 	$sql = sprintf("DELETE FROM reponse WHERE ['id_questions']['id_question']='%s'",
@@ -54,11 +66,15 @@ $sql = "SELECT titre, date, pseudo, email, id_questions, id_auteurs FROM questio
 
 
 while($row = $question_request->fetch_object()) :
-		$allRowsQuest[] = $row; 
-endwhile;//Boucle
+		$allRowsQuest[] = $row;
+endwhile;
+
+if(isset($_GET['alt']) AND $_GET['alt'] == 'json') :
+	echo json_encode($allRowsQuest);
+	exit;
+	endif;//Boucle je peux la recuperer avec ajax
 
 ?>
-
 <?php include("header.php"); ?>
 
 	<h1>Les questions</h1>
@@ -78,10 +94,13 @@ endwhile;//Boucle
 				<p class="date"><?php echo dateAff($allRowsQuest[$i]->date,"/"); ?></p>  <!-- Pas valable pour un datetime. C'est pour un date. -->
 				
 				<?php if (isset($_SESSION['auteur']['id_auteurs']) AND $allRowsQuest[$i]->id_auteurs == $_SESSION['auteur']['id_auteurs']) :  ?> <!-- Si j'ai l'id_auteurs AND que l'id_auteurs est == a l'id_auteurs de la session, alors je peux supprimer la question. -->
-				<a href="index.php?delete=<?php echo $allRowsQuest[$i]->id_questions; ?>" class="delete">DELETE </a> <!-- Je met un parametre au clic. Tu me mets dans l url index.php et tu mets le parametre delete avec la valeur correspondante à l'id question. Et comme je suis sur l'index, je ne rajoute pas de paramètre pour récupérer ma position vis à vis de la question. Pas besoin de recharger ma page.-->
+				<a href="index.php?delete=<?php echo $allRowsQuest[$i]->id_questions; ?>" class="delete">DELETE </a><br> <!-- Je met un parametre au clic. Tu me mets dans l url index.php et tu mets le parametre delete avec la valeur correspondante à l'id question. Et comme je suis sur l'index, je ne rajoute pas de paramètre pour récupérer ma position vis à vis de la question. Pas besoin de recharger ma page.-->
 				<?php endif; ?>
 
 			<?php endif; ?>
+				<?php if (isset($_SESSION['auteur']['id_auteurs']) AND $allRowsQuest[$i]->id_auteurs == $_SESSION['auteur']['id_auteurs']) :  ?>
+				<a href="update.php?id_questions=<?php echo $allRowsQuest[$i]->id_questions; ?>" class="update">UPDATE</a>
+				<?php endif; ?>
 		</li>
 	<?php endfor;?>
 

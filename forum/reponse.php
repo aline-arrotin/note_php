@@ -37,6 +37,7 @@ endif;
 $sql = "SELECT * FROM question WHERE id_questions = " .$_GET['id_questions']; //
 //Requête à partir de ma table question. J'affiche l'id_questions (clé primaire définie dans la page index) par rapport à ma clé primaire. Ici l'id_questions vaut donc la clé primaire. Donc il compare l'id dans l'url avec l'id dans la table question et j'affiche le contenu s'y rapportant comme demandé dans ma boucle plus bas.
 
+
 	$myQuestion = $db_connect->query($sql);
 	echo $db_connect->error;
 
@@ -44,6 +45,11 @@ $sql = "SELECT * FROM question WHERE id_questions = " .$_GET['id_questions']; //
 while($row = $myQuestion->fetch_object()) :
 		$allRowsQuest[] = $row; 
 endwhile; //Boucle
+
+
+//GET/POST
+
+//Quand mon info vient d'un lien = GET. Quand mon info est d'un form = POST.
 
 
 
@@ -61,19 +67,16 @@ while($rep = $reponse_request->fetch_object()) : //La je recupère chaques répo
 endwhile; //Boucle
 
 ?>
-<?php include("header.php"); ?>
 <h1>Les réponses</h1>
 	<main>
 
-	<?php  for($i=0; $i< count($allRowsQuest); $i++) : ?> <!-- Je crée une boucle pour afficher le titre de ma requête sur les questions. -->
+	<?php  for($i=0; $i< count($allRowsQuest); $i++) : //Je crée une boucle pour afficher le titre de ma requête sur les questions.?>
 		<h2><?php echo $allRowsQuest[$i]->titre; ?></h2> <!-- Je l'affiche. -->
-	<?php endfor;?> <!-- Je finis la boucle. -->
-
-
-		<?php if($reponse_request->num_rows > 0) : ?> <!-- Ma propriété num_row depend de ma query. Si lorsque je fais ma query sur les réponses le num de colonne n'est pas negatif alors, je fais ma boucle... -->
+	<?php endfor;?>
+<?php if($reponse_request->num_rows > 0) : //Ma propriété num_row depend de ma query. Si lorsque je fais ma query sur les réponses le num de colonne n'est pas negatif alors, je fais ma boucle...?>
 			<ul>
-				<?php  for($i=0; $i< count($allRowsRep); $i++) : ?> <!-- Je crée une boucle pour afficher les données dans ma vue reponse_auteur. -->
-					<?php $thisRow = $allRowsRep[$i];  ?> <!-- Je crée une variable $thisRow que je vais répeter plus bas pour ne pas afficher une longue phrase. -->
+				<?php  for($i=0; $i< count($allRowsRep); $i++) : //Je crée une boucle pour afficher les données dans ma vue reponse_auteur.?>
+					<?php $thisRow = $allRowsRep[$i];  //Je crée une variable $thisRow que je vais répeter plus bas pour ne pas afficher une longue phrase.?>
 					
 					<li class="question">
 						<p><?php echo $thisRow->label; ?></p> <!-- J'affiche la/les réponse(s) à ma question. -->
@@ -85,16 +88,20 @@ endwhile; //Boucle
 						<?php if(isset($_SESSION['auteur']['id_auteurs']) AND $thisRow->id_auteurs == $_SESSION['auteur']['id_auteurs']) :  ?> <!-- Si j'ai l'id_auteurs AND que l'id_auteurs est == a l'id_auteurs de la session, alors je peux supprimer la question. -->
 						<a href="reponse.php?delete=<?php echo $thisRow->id_reponse; ?>&id_questions=<?php echo $_GET['id_questions']; ?>" class="delete">DELETE </a>
 						<!-- Dans mon url de page reponse, ca me met un parametre delete avec l'id_reponse(celui à supprimer) et ensuite je met l'id question pour revenir sur la page.  -->
+						<a href="updaterep.php?update=<?php echo $thisRow->id_reponse; ?>" class="update">UPDATE</a>
 						<?php endif; ?>
+
+
+
 					</li>
 
-				<?php endfor;?> <!-- Fin de ma boucle -->
+				<?php endfor;?>
 
 			</ul>
 
-		<?php else : ?><!-- Sinon, lorsque je fais ma requête sur les réponses le num de colone est negatif alors... -->
+		<?php else : //Sinon, lorsque je fais ma requête sur les réponses le num de colone est negatif alors...?>
 			<p>Il n'y a pas de réponse</p> <!-- J'affiche ceci. -->
-		<?php endif; ?> <!-- Fin du If -->
+		<?php endif; //Fin du If?>
 
 
 
