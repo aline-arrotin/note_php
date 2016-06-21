@@ -1,0 +1,141 @@
+@charset "utf-8";
+* {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	margin: 0px;
+	padding: 0px;
+}
+#max {
+	position: relative;
+	width: 760px;
+	margin: auto;
+	border: 1px dotted #999999;
+	padding:0px 10px;
+}
+
+
+#header {
+	position: relative;
+	height: 120px;
+	background-image: url(images/title.jpg);
+	background-repeat: no-repeat;
+}
+#footer {
+	background-color: #BDD6F4;
+	clear: left;
+	position: relative;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+}
+#max #header #search {
+	position: absolute;
+	left: 434px;
+	top: 76px;
+}
+#header #nav {
+	position: absolute;
+	left: 126px;
+	top: 91px;
+	color: #324DA8;
+}
+.break {
+	clear: both;
+}
+
+#header #nav a {
+	color: #324DA8;
+	font-weight: bold;
+	text-decoration: none;
+}
+#header #nav a:hover {
+	text-decoration:underline;
+}
+#max #col1 {
+	float: left;
+	width: 33.33%;
+	text-align:center;
+	padding: 0px;
+	margin-top: 20px;
+}
+#max #col2 {
+	float: left;
+	width: 33.33%;
+	text-align:center;
+	margin-top: 20px;
+}
+#max #col3 {
+	float: left;
+	width: 33.33%;
+	text-align:center;
+	margin-top: 20px;
+}
+#max #col22 {
+	float: left;
+	width: 66.66%;
+	text-align:center;
+	margin-top: 20px;
+}
+#max #col1 .article h1, #max #col2 .article h1, #max #col3 .article h1, #max #col22 .article h1 {
+	color: #506CB5;
+	font-weight: bold;
+	font-size: 16px;
+	background-image: none;
+	text-align: left;
+	text-indent: 0px;
+	height:auto;
+}
+#max #col1 h1, #max #col2 h1, #max #col3 h1, #max #col22 h1 {
+	color: #8DBEDC;
+	background-image: url(images/puce1.jpg);
+	height: 21px;
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 25px;
+	line-height: 20px;
+	font-size: 18px;
+}
+
+#max .article {
+	width: 80%;
+	border: 1px dotted #999999;
+	text-align:left;
+	padding: 7px;
+	margin-top: 8px;
+	margin-left: 15px;
+}
+#max .article .date {
+	text-align: right;
+	color: #FF0000;
+	margin-bottom: 10px;
+	font-size: 9px;
+}
+#max .article .signature {
+	text-align: right;
+	font-style: italic;
+	color: #2142A3;
+}
+.par {
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+.left {
+	float: left;
+	margin-right: 10px;
+}
+a.plus {
+	font-weight: bold;
+	color: #BDD6F4;
+	text-decoration: none;
+}
+a:hover.plus {
+	text-decoration: none;
+	color: #324DA8;
+}
+.cat {
+	color: #FF0000;
+	margin-top: 8px;
+}
