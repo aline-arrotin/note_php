@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+    <meta charset="utf-8"/>
+    <title>Angular</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0/">
+		<meta name="keywords" content="Web,HTML,CSS,XML,JavaScript" />
+<!-- 		<meta name="description" content="Site Web bla bla bla" />
+		<meta name="author" content="name" />
+		<link href="css/normalize.min.css" rel="stylesheet" media="screen" />
+		<link href="css/main.css" rel="stylesheet" media="screen" /> -->
+  	<!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script>window.html5 || document.write('<script src="js/html5shiv.js"><\/script>')</script>
+  	<![endif]-->
+	</head>
+<body data-ng-app = "myApp"> <!-- on definis quon fait une app angular et je la nomme myApp. -->
+		<div class="container">
+
+			<form>
+				<input type="text" data-ng-model="YourName" placeholder="Votre nom ?">
+			</form>
+
+			<h1>Bonjour {{YourName}}</h1>
+
+			<section data-ng-controller="UserCtrl"> <!-- Je dis qu'on va utiliser un controlleur appelé UserCtrl -->
+				<h1>{{user.nom}} {{user.prenom}}</h1> <!-- Accessible pour le controlleur en question. -->
+			</section>
+
+			<section data-ng-controller="UserNews">
+				<h1>{{text.titre}}</h1>
+				<p>{{text.text}}</p>
+			</section>
+
+			<section data-ng-controller="ProductsCtrl">
+					<div data-ng-repeat-start="(category,produits) in products">
+						<h1>{{category}}</h1>
+					</div>
+					<!-- <div data-ng-repeat-end></div> //N'affiche que les catégories-->
+						 <ul data-ng-repeat-end data-ng-repeat="item in produits | orderBy : 'prix'">
+							<li>{{item.title}} à {{item.prix}}</li>
+						</ul>
+			</section>
+
+		</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-XXXXX-Y', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+</html>

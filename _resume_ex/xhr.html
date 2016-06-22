@@ -1,0 +1,22 @@
+<script>
+	xhr = new XMLHttpRequest();
+
+	   xhr.onreadystatechange  = function() 
+    { 
+       if(xhr.readyState  == 4)
+       {
+        if(xhr.status  == 200) {
+            console.log("Received:"  + xhr.responseText); 
+        	dataResponse = JSON.parse(xhr.responseText);
+        	//dataResponse = dataResponse.feed.entry;
+        	console.log(dataResponse);
+        }
+        else {
+            console.log("Error code " + xhr.status);
+        }
+        }
+    }; 
+ url = "http://localhost:8010/_php/_resume_ex/?feed&alt=json";
+   xhr.open( "GET", url,  true); 
+   xhr.send(null); 
+</script>

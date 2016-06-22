@@ -51,5 +51,20 @@
 			//AllRows = $listQ ->fetch_all(MYSQLI_ASSOC);
 			return $allRows;
 		}
+
+		function all () {
+			global $db_connect; // Indique qu il doit aller chercher cette variable en dehors de l'objet.
+			$sql = sprintf("SELECT * FROM cats_arts_auteurs ORDER BY date DESC LIMIT 0,5");
+
+			sqlAff($sql);
+			$listeH = $db_connect -> query($sql);
+			echo $db_connect ->error;
+			while($row = $listeH ->fetch_object()) :
+				$allRows[] = $row;
+			endwhile;
+
+			return $allRows;
+
+			}
 	}
  ?>

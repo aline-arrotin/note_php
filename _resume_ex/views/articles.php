@@ -38,5 +38,11 @@ class ArticlesView{
       </div>
 
         <?php }
+
+        function feedJson($array) {
+          header('Content-Type: application/json');
+          echo json_encode($array);
+          exit;
+        }
     }
 ?>

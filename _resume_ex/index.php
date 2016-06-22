@@ -1,7 +1,9 @@
 <?php include("config.php"); ?>
 <?php include("function.php"); ?>
 <?php //routage
-	if(isset($_GET['view'])) :
+	if(isset($_GET['feed'])) :
+				include("controllers/feed.php");
+	elseif(isset($_GET['view'])) :
 				switch($_GET['view']) :
 					case("categories") : include("controllers/categories.php"); break;
 					case("articles") : include("controllers/articles.php"); break;
