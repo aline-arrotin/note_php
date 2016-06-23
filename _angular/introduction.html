@@ -44,6 +44,55 @@
 						</ul>
 			</section>
 
+			<section data-ng-controller="MainCtrl">
+				<div data-ng-repeat="Art in articles">
+				<h1>{{Art.titre}}</h1>
+				<p>Posté le {{Art.date}} par la personne {{Art.prenom}} {{Art.nom}}</p>
+				<p>{{Art.texte}}</p>
+				</div>
+			</section>
+
+			<section data-ng-controller="MotoCtrl">
+				<div>
+				<h1>{{Biker.gsx$marque.$t}}</h1>
+				<ul data-ng-repeat ="Biker in motos">
+					<ul>
+						<li>{{Biker.gsx$marque.$t}}</li>
+						<li>{{Biker['gsx$cylindrée'].$t}} ccm</li>
+						<li>{{Biker.gsx$couleur.$t}}</li>
+						<li>{{Biker.gsx$etat.$t}}</li>
+						<li>{{Biker['gsx$modèle'].$t}}</li>
+						<li>{{Biker['gsx$année'].$t | date : "dd MMM yyyy"}}</li>
+					</ul>
+				</div>
+
+				<form name="myformMotos" data-ng-submit="addMoto()">
+
+						<label for="">Marque</label><br>
+						<input name="newMarque" type="text" data-ng-model="newMarque" required><br>
+						<span data-ng-show="myformMotos.newMarque.$touched && myformMotos.newMarque.$invalid">This fucking name is required</span><br>
+
+						<label for="">Cylindrée</label><br>
+						<input type="text" data-ng-model="newCylindree"><br>
+
+						<label for="">Couleur</label><br>
+						<input type="text" data-ng-model="newCouleur"><br>
+
+						<label for="">Etat</label><br>
+						<input type="text" data-ng-model="newEtat"><br>
+
+						<label for="">Modèle</label><br>
+						<input type="text" data-ng-model="newModel"><br>
+
+						<label for="">Année</label><br>
+						<input type="date" data-ng-model="newDate"><br>
+						
+
+						<input type="submit">
+				</form>
+			</section>
+
+
 		</div>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
